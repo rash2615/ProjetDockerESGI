@@ -1,6 +1,6 @@
 <?php
 // Connexion à la base de données PostgreSQL
-$dsn = 'pgsql:host=postgres;dbname=todo_db;port=5432';
+$dsn = 'pgsql:host=postgres;dbname=todo_db';
 $user = 'postgres';
 $password = 'votre_mot_de_passe';
 $db = new PDO($dsn, $user, $password);
