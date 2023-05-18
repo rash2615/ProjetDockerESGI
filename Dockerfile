@@ -1,13 +1,18 @@
-FROM php:7.4-fpm-alpine
+# Utilisez une image de base alpine pour minimiser la taille de l'image
+FROM alpine:latest
 
-# Installe les dépendances nécessaires
-RUN docker-php-ext-install pdo pdo_pgsql
+# Installez les dépendances nécessaires pour PHP et PostgreSQL
+RUN apk --no-cache add php7 php7-pdo php7-pdo_pgsql php7-json postgresql-client
 
-# Copie le code source de l'application
-COPY . /var/www/html
+# Définissez le répertoire de travail dans le conteneur
+WORKDIR /app
 
-# Définit le répertoire de travail
-WORKDIR /var/www/html
+# Copiez les fichiers de votre application dans le conteneur
+COPY . /app
 
-# Expose le port 9000 pour la communication avec Nginx
-EXPOSE 9000
+# Exposez le port sur lequel votre application PHP va s'exécuter
+EXPOSE 80
+
+# Démarrez le serveur web PHP pour exécuter votre application
+CMD ["php", "-S", "0.0.0.0:80"]
+
