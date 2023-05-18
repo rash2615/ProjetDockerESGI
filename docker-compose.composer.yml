@@ -1,0 +1,9 @@
+version: '3'
+services:
+  composer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/html
+    command: composer install
