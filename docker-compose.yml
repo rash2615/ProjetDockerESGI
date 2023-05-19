@@ -9,7 +9,7 @@ services:
 
     php:
         build:
-            context: ./docker
+            context: .
             dockerfile: php.Dockerfile
         volumes:
             - .:/src
@@ -18,8 +18,8 @@ services:
         image: postgres
         ports : 
             - 5432:5432
-        volumes:
-            - ./database:/var/lib/postgresql/data
+        #volumes:
+        #    - ./database:/var/lib/postgresql/data
         environment:
             - POSTGRES_DB=esgi
             - POSTGRES_USER=esgi

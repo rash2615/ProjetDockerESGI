@@ -1,8 +1,8 @@
 <?php
 // Connexion à la base de données PostgreSQL
 $port = '5432';
-$host = 'esgi';
-$user = 'postgres';
+$user = 'esgi';
+$host = 'postgres';
 $dbname = 'esgi';
 $password = 'esgi';
 $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password";
