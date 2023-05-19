@@ -1,13 +1,16 @@
 <?php
 // Connexion à la base de données PostgreSQL
-$dsn = 'pgsql:host=postgres;dbname=todo_db';
+$port = '5432';
+$host = 'esgi';
 $user = 'postgres';
-$password = 'yaya12002';
-$db = new PDO($dsn, $user, $password);
+$dbname = 'esgi';
+$password = 'esgi';
+$dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password";
+$db = new PDO($dsn);
 
 // Exécutez une requête pour récupérer les données de la table "todo"
 $query = $db->query('SELECT * FROM todo');
-$todos = $query->fetchAll(PDO::FETCH_ASSOC);
+$result = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -18,8 +21,8 @@ $todos = $query->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <h1>Todo List</h1>
     <ul>
-        <?php foreach ($todos as $todo): ?>
-            <li><?php echo $todo['id']; ?> - <?php echo $todo['titre']; ?> (<?php echo $todo['done'] ? 'Fait' : 'À faire'; ?>)</li>
+        <?php foreach ($result as $result): ?>
+            <li><?php echo $result['id']; ?> - <?php echo $result['titre']; ?> (<?php echo $result['done'] ? 'Fait' : 'À faire'; ?>)</li>
         <?php endforeach; ?>
     </ul>
 </body>

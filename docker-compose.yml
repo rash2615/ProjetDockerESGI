@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  php:
+    image: php:7.4-apache
+    ports:
+      - 80:80
+    volumes:
+      - ./app:/var/www/html
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+  postgres:
+    image: postgres:13
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=esgi
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=esgi
+
+  composer:
+    image: composer
+    volumes:
+      - ./app:/app
+      
